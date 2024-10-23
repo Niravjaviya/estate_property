@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name = "Propery ads" id = "menu_root_property" >
+        <menuitem id = "menu_property_ads" name= "ads">
+            <menuitem id = "menu_property" name= "property" action= "real_estate_ads.action_property" />
+        </menuitem>
+        <menuitem id = "menu_property_ads_settings" name= "settings">
+            <menuitem id = "menu_property_type" name= "property Type" action= "real_estate_ads.action_property_type" />
+        </menuitem>
+     </menuitem>
+</odoo>
