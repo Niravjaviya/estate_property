@@ -25,7 +25,8 @@
                 <form>
                     <sheets>
                         <group>
-                            <field name="name"/>
+                            <field name="name"/>  
+                            <field name="tag_ids" widget= "many2many_tags"/> 
                             <group>
                                  <field name="type_id"/>
                                  <field name="postcode"/>
