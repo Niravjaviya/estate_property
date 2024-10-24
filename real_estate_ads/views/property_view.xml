@@ -36,6 +36,13 @@
                                  <field name="expected_price"/>
                                  <field name="selling_price"/>
                             </group>
+                            <field name="offer_ids">
+                                <list>
+                                    <field name="price"/>
+                                    <field name="partner_id"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
                         </group>
                     </sheets>
                 </form>
