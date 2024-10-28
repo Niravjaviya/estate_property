@@ -41,6 +41,7 @@
                         </group>
                         <notebook>
                                 <page string="Description">
+                                <group>
                                     <field name="description"/>
                                     <field name="bedrooms"/>
                                     <field name="living_area"/>
@@ -49,15 +50,25 @@
                                     <field name="garden"/>
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
+                                </group>
+                                    
                                 </page>
                                 <page string= "Offers">
                                     <field name="offer_ids">
-                                        <list>
+                                        <list editable="bottom">
                                             <field name="price"/>
                                             <field name="partner_id"/>
-                                            <field name="status"/>
+                                            <field name="validity"/>
+                                            <field name="deadline"/>
+                                            <field name="status" nolabel="1"/>
                                         </list>
                                     </field>
+                                </page>    
+                                <page string= "Other Info">
+                                    <group>
+                                        <field name="sales_id"/>
+                                        <field name="buyer_id"/>
+                                    </group>
                                 </page>
                         </notebook>
                     </sheets>
