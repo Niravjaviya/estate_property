@@ -17,6 +17,9 @@
         #'data/property_type.xml',
         'data/estate.property.type.csv'
     ],
+    "demo":[
+        'demo/property_tag.xml'
+    ],
     "installable": True,
     "application": True,
     "license": "LGPL-3",

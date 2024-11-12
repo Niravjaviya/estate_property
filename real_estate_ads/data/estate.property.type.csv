@@ -1,5 +1,5 @@
 "id","name"
-proeperty_type_house, "House"
-proeperty_type_apartment, "Apartment"
-proeperty_type_penthouse, "PentHouse"
-proeperty_type_castle, "Castle"
+proeperty_type_house,House
+proeperty_type_apartment,Apartment
+proeperty_type_penthouse,PentHouse
+proeperty_type_castle,Castle
