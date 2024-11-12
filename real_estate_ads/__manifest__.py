@@ -14,7 +14,8 @@
         'views/menu_items.xml',
 
         #Data_files
-        'data/property_type.xml',
+        #'data/property_type.xml',
+        'data/estate.property.type.csv'
     ],
     "installable": True,
     "application": True,
