@@ -21,7 +21,7 @@ class Property(models.Model):
     garden_orientation = fields.Selection ([('north','North'), ('south','South'), ('east','East'), ('west', 'West')], string='Garden Orientation', default='north')
     offer_ids= fields.One2many('estate.property.offer', 'property_id', string="Offers")
     sales_id= fields.Many2one('res.users', string="Salesman")
-    buyer_id= fields.Many2one('res.partner', string="Buyer")
+    buyer_id= fields.Many2one('res.partner', string="Buyer", domain= [('is_company','=',True)])
     phone= fields.Char(string='Phone', related='buyer_id.phone')
 
     @api.onchange("living_area", "garden_area")
