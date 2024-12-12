@@ -13,8 +13,11 @@ class PropertyOffer(models.Model):
     deadline= fields.Date(string="Deadline", compute= '_compute_deadline', inverse="_inverse_deadline")
     creation_date= fields.Date(string="Creation Date")
 
-    @api.depends("validity", "deadline")
+    @api.depends("validity", "creation_date")
+    @api.depends_context('uid')
     def _compute_deadline(self):
+         print(self.env.context)
+         print(self._context)
          for rec in self:
             if rec.creation_date and rec.validity:
                 rec.deadline= rec.creation_date + timedelta(days= rec.validity)
