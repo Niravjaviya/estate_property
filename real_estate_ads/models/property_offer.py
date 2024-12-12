@@ -11,12 +11,7 @@ class PropertyOffer(models.Model):
     property_id=fields.Many2one('estate.property', string='Property')
     validity= fields.Integer(string="Validity")
     deadline= fields.Date(string="Deadline", compute= '_compute_deadline', inverse="_inverse_deadline")
-
-    @api.model
-    def _set_create_date(self):
-        return fields.Date.today()
-    
-    creation_date= fields.Date(string="Creation Date", default=_set_create_date)
+    creation_date= fields.Date(string="Creation Date")
 
     @api.depends("validity", "deadline")
     def _compute_deadline(self):
@@ -27,4 +22,15 @@ class PropertyOffer(models.Model):
                 rec.deadline= False
     def _inverse_deadline(self):
         for rec in self:
-            rec.validity= (rec.deadline - rec.creation_date).days
+            if rec.deadline and rec.creation_date:
+                rec.validity= (rec.deadline - rec.creation_date).days
+            else:
+                rec.validity= False
+
+    
+    @api.model_create_multi
+    def create(self, vals):
+        for rec in vals:
+            if not rec.get('creation_date'):
+                rec['creation_date'] = fields.Date.today()
+        return super(PropertyOffer, self).create(vals)
