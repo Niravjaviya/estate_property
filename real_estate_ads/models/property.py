@@ -5,6 +5,9 @@ class Property(models.Model):
     _description = 'Estate property'
 
     name = fields.Char(string='Name', required= True)
+    state= fields.Selection([
+         ('new', 'New'), ('accepted', 'Accepted'), ('refused', 'Refused'), ('cancel', 'Cancel')
+         ], default='new', string='Status')
     tag_ids= fields.Many2many('estate.property.tag', string='Property tag')
     type_id= fields.Many2one('estate.property.type', string='Property type')
     description = fields.Text(string='Description')

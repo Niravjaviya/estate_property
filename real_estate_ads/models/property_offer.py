@@ -14,9 +14,9 @@ class PropertyOffer(models.Model):
     deadline= fields.Date(string="Deadline", compute= '_compute_deadline', inverse="_inverse_deadline")
     creation_date= fields.Date(string="Creation Date")
 
-    _sql_constraints = [
-        ('check_validity', 'check(validity>0)', 'Deadline can not be before creation date')
-    ]
+    # _sql_constraints = [
+    #     ('check_validity', 'check(validity>0)', 'Deadline can not be before creation date')
+    # ]
 
     @api.depends("validity", "creation_date")
     def _compute_deadline(self):
@@ -40,9 +40,10 @@ class PropertyOffer(models.Model):
                 rec['creation_date'] = fields.Date.today()
         return super(PropertyOffer, self).create(vals)
 
-    # @api.constrains('validity')
-    # def _check_validity(self):
-    #     for rec in self:
-    #         if rec.deadline <= rec.creation_date:
-    #             raise ValidationError(self.env._("Deadline can not be before creation date"))
+    @api.constrains('validity')
+    def _check_validity(self):
+        for rec in self:
+            if rec.deadline and rec.creation_date:
+                if rec.deadline <= rec.creation_date:
+                     raise ValidationError(self.env._("Deadline can not be before creation date"))
 
