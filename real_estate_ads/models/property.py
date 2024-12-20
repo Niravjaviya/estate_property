@@ -33,6 +33,13 @@ class Property(models.Model):
             self.total_area = self.living_area + self.garden_area
     total_area= fields.Integer(string="Total Area")
 
+    def action_accept(self):
+         self.state = 'accepted'
+
+    def action_refuse(self):
+         self.state = 'refused'
+
+
     
 class PropertyType(models.Model):
     _name = 'estate.property.type'
