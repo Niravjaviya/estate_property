@@ -24,15 +24,15 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                         <button name="action_accept" type="object" string="Accept"/>
-                         <button name="action_refuse" type="object" string="Decline"/>
+                         <button name="action_sold" type="object" string="Sold" class="btn btn-primary"/>
+                         <button name="action_cancel" type="object" string="Cancel" class="btn btn-danger"/>
+                         <field name="state" widget="stutusbar"/>
                     </header>
                     <sheets>
                         <group>
                             <field name="name"/>  
                             <field name="tag_ids" widget= "many2many_tags"/> 
                             <group>
-                                 <field name="state"/>
                                  <field name="type_id"/>
                                  <field name="postcode"/>
                                  <field name="date_availabity"/>

@@ -6,7 +6,11 @@ class Property(models.Model):
 
     name = fields.Char(string='Name', required= True)
     state= fields.Selection([
-         ('new', 'New'), ('accepted', 'Accepted'), ('refused', 'Refused'), ('cancel', 'Cancel')
+         ('new', 'New'), 
+         ('received', 'Offer Received'), 
+         ('accepted', 'Offer Accepted'), 
+         ('sold', 'Sold'), 
+         ('cancel', 'Cancelled')
          ], default='new', string='Status')
     tag_ids= fields.Many2many('estate.property.tag', string='Property tag')
     type_id= fields.Many2one('estate.property.type', string='Property type')
@@ -33,11 +37,11 @@ class Property(models.Model):
             self.total_area = self.living_area + self.garden_area
     total_area= fields.Integer(string="Total Area")
 
-    def action_accept(self):
-         self.state = 'accepted'
+    def action_sold(self):
+         self.state = 'sold'
 
-    def action_refuse(self):
-         self.state = 'refused'
+    def action_cancel(self):
+         self.state = 'cancel'
 
 
     
