@@ -2,16 +2,16 @@ from odoo import fields, models, api
 from datetime import timedelta
 from odoo.exceptions import ValidationError
 
-class AbstractOffer(models.AbstractModel):
-    _name= 'abstract.model.offer'
-    _description= 'Abstract offers'
+class TransientOffer(models.TransientModel):
+    _name= 'transient.model.offer'
+    _description= 'Transient offers'
+    _transient_max_count= 0
 
     partner_email = fields.Char(string="Email")
     partner_phome = fields.Char(string="Phone Number")
 
 class PropertyOffer(models.Model):
     _name = 'estate.property.offer'
-    _inherit= ['abstract.model.offer']
     _description = 'Estate property offers'
 
     price= fields.Float(string="Price")
